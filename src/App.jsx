@@ -27,11 +27,13 @@ function App() {
 		// KEY - 6a235cc2b047e7963e70cfeadeabd6bd
 
 		try {
+			const base64Image = capturedImage.split(",")[1];
+
 			const formData = new FormData();
-			formData.append("image", capturedImage);
+			formData.append("image", base64Image);
 
 			const response = await fetch(
-				"https://api.imgbb.com/1/upload?key=6a235cc2b047e7963e70cfeadeabd6bd&name=test",
+				`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}&name=test-2`,
 				{
 					method: "POST",
 					body: formData,
